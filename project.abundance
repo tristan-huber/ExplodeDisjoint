@@ -1,13 +1,65 @@
 {
-    "atomType": "Molecule",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "id-2775",
-    "name": "ExplodeDisjoint",
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "Unitless",
-    "fileTypeVersion": 1,
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "id-2775",
+  "name": "ExplodeDisjoint",
+  "ioValues": [
+    {
+      "name": "ShapeToExplode",
+      "ioValue": "__GEOMETRY_INPUT__"
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "id-2776",
+      "ioValues": [
+        {
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.3912760416666667,
+      "y": 0.5171428571428571,
+      "uniqueID": "id-2778",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "codeVersion": 1,
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n];\n\nlet importedShape = library[shape];\nconst s = importedShape.geometry[0]\nconst resultGeoms = []\nfor (const foo of replicad.iterTopo(s.wrapped, \"solid\")) {\n  resultGeoms.push(foo)\n}\nconsole.log(`extracted ${resultGeoms.length} solids`)\nconsole.log(replicad.cast(resultGeoms[0]))\n\nfor (let i = 0; i < resultGeoms.length; i++) {\n  resultGeoms[i] = {\n    ...importedShape,\n    geometry: [replicad.cast(resultGeoms[i])],\n  }\n}\n/*let cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};*/\nconsole.log(resultGeoms)\nlet assembly = await Assembly(resultGeoms);\nreturn assembly;\n"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.26857142857142857,
+      "uniqueID": "id-2783",
+      "name": "ShapeToExplode",
+      "type": "geometry"
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-2778",
+      "ap2ID": "id-2776"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-2783",
+      "ap2ID": "id-2778"
+    }
+  ],
+  "unitsKey": "Unitless",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
