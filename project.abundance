@@ -45,6 +45,21 @@
       "uniqueID": "id-2783",
       "name": "ShapeToExplode",
       "type": "geometry"
+    },
+    {
+      "atomType": "Readme",
+      "x": 0.203125,
+      "y": 0.6228571428571429,
+      "uniqueID": "id-2786",
+      "name": "README",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "readMeText": "Makes an assembly where each leaf is a disjoint (ie not touching) part from the input. Particularly useful for imported entities.",
+      "global": true
     }
   ],
   "allConnectors": [
