@@ -35,13 +35,13 @@
           "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
-      "codeVersion": 1,
+      "interpreterVersion": 0,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n];\n\nlet importedShape = library[shape];\nconst s = importedShape.geometry[0]\nconst resultGeoms = []\nfor (const foo of replicad.iterTopo(s.wrapped, \"solid\")) {\n  resultGeoms.push(foo)\n}\nconsole.log(`extracted ${resultGeoms.length} solids`)\nconsole.log(replicad.cast(resultGeoms[0]))\n\nfor (let i = 0; i < resultGeoms.length; i++) {\n  resultGeoms[i] = {\n    ...importedShape,\n    geometry: [replicad.cast(resultGeoms[i])],\n  }\n}\n/*let cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};*/\nconsole.log(resultGeoms)\nlet assembly = await Assembly(resultGeoms);\nreturn assembly;\n"
     },
     {
       "atomType": "Input",
-      "x": 0.025384615384615384,
-      "y": 0.26857142857142857,
+      "x": 0.0231,
+      "y": 0.14,
       "uniqueID": "id-2783",
       "name": "ShapeToExplode",
       "type": "geometry"
@@ -54,7 +54,7 @@
       "name": "README",
       "ioValues": [
         {
-          "name": "geometry",
+          "name": "value",
           "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
