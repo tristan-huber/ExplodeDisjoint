@@ -4,6 +4,11 @@
 
 ![](/project.svg)
 
+## Inputs
+
+- **ShapeToExplode** (geometry)
+
+
 
 
  Makes an assembly where each leaf is a disjoint (ie not touching) part from the input. Particularly useful for imported entities.
