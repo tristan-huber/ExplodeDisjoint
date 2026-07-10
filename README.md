@@ -13,5 +13,7 @@
 
  Makes an assembly where each leaf is a disjoint (ie not touching) part from the input. Particularly useful for imported entities.
 
+__GEOMETRY_INPUT__
+
 
 
